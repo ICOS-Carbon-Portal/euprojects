@@ -1,0 +1,7 @@
+site/
+build/
+examples/
+__pycache__/
+*.egg-info
+*.pylint.d/
+.idea/
