@@ -1,20 +1,12 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, html, Input, Output
 from flask import request
-from ReadPlugins import EoscValueObject
+import dashContent
 
-sd_data_obj = EoscValueObject()
-
+dashContent.init_data()
 
 app = Dash(__name__, )
 
-infrastructure_checklist = dcc.Checklist(
-    className='input-checklist',
-    id='input-checklist',
-    options=sd_data_obj.get_providers(),
-    # labelStyle={'display': 'block'},
-    inputClassName='input-checkbox',
-    labelClassName='label-input'
-)
+infrastructure_checklist = dashContent.mainmenu()
 
 app.layout = html.Div([
     html.Div(children=[
@@ -43,24 +35,7 @@ def update_output_div(input_value):
     frame_containers = list()
     if input_value:
         for item in input_value:
-            if item == 'ICOS':
-                my_source = 'https://data.icos-cp.eu/dashboard/?stationId=BIR&valueType=co&height=50'
-            elif item == 'INGOS':
-                my_source = 'https://www.ingos-infrastructure.eu/'
-            elif item == 'NEON':
-                my_source = 'assets/static-html/neon.html'
-            elif item == 'OCEAN':
-                my_source = 'assets/static-html/ocean.html'
-            else:
-                my_source = '/assets/static-html/folium_map.html'
-            frame_div = html.Div(
-                className='frame-container',
-                children=[
-                    html.Iframe(
-                        className='infrastructure-frame',
-                        src=my_source,
-                        title=item,
-                    )])
+            frame_div = dashContent.fetch_div(item)
             frame_containers.append(frame_div)
     print(request.remote_addr)
     return frame_containers
@@ -76,3 +51,4 @@ if __name__ == '__main__':
     # The `ssl_context='adhoc'` parameter is used to quickly serve an
     # application over HTTPS without having to mess with certificates.
     app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
+    #app.run_server(debug=True)    # to be removed

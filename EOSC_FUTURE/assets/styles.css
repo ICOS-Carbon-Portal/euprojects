@@ -41,14 +41,47 @@
 }
 
 .frame-container {
+    width: max(220px,min(400px,50vh));
+    height: max(380px,min(600px,60vh));
     /*flex-basis: content;*/
     /*width: auto;*/
     /*height: 100%;*/
 }
 
 .infrastructure-frame {
+    width: max(220px,min(400px,50vh));
+    height: max(380px,min(600px,60vh));
+}
+
+.logo-img{
+    margin-top: 2px;
+    margin-right: 2px;
+    width: min(80px,45%);
+}
+
+.tab-container{
     width: 100%;
-    height: 40vh;
+    height: 100%;
+}
+
+.tab{
+    width: 100%;
+    height: 100%;
+}
+
+.tab-1-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-2-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-3-content{
+    display: flex;
+    flex-direction: row;
 }
 
 .header-container {

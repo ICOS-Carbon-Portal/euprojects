@@ -98,6 +98,9 @@ resourcetype: Dataset
 
 SD_provider: "ICOS Carbon Portal"
 
+# Here we assume we have width="40" for the logo which is a .png/.jpg
+SD_logo_url: 'https://www.icos-cp.eu/sites/default/files/2017-11/ICOS_CP_logo.png'
+
 SD_URL:
     base: https://data.icos-cp.eu/dashboard/            
     param1:
