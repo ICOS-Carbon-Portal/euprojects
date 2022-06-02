@@ -1,0 +1,15 @@
+.container {
+  display: flex; /* or inline-flex */
+}
+.float-parent-element {
+    display: flex;
+}
+.float-selection-element {
+    float: left;
+    border: 1px solid red;
+    background-color: lightgray;
+}
+.float-output-element {
+    border: 1px solid red;
+    background-color: lightgray;
+}

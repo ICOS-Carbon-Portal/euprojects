@@ -1,0 +1,134 @@
+# The template is divided in three sections
+# 1. Metadata to be compatible with data cite, in case of creating a DOI
+# 2. Information about the plug in or service
+# 3. Meta data about the yaml file
+
+# Section 1
+# Metadata for DOI registration according to DataCite Metadata Schema 4.1.
+# For detailed schema description see https://doi.org/10.5438/0014
+
+## Required fields
+
+# The main researchers involved. Include digital identifier (e.g., ORCID)
+# if possible, including the prefix to indicate its type.
+authors:
+  -
+    firstname: "Richard"
+    lastname: "Rud"
+    affiliation: "Norwegian Institute for Air Research"
+    id: "ORCID: 0000-0001-9250-9813"
+
+  -
+    firstname: "Markus"
+    lastname: "Fiebig"
+    affiliation: "Norwegian Institute for Air Research"
+    id: "ORCID: 0000-0002-3380-3470"
+
+# A title to describe the published resource.
+title: "ACTRIS Near-Realtime equivalent black carbon measurements"
+
+# Additional information about the resource, e.g., a brief abstract.
+description: |
+  ACTRIS Near-Realtime equivalent black carbon measurements
+
+
+# List of keywords the resource should be associated with.
+# Give as many keywords as possible, to make the resource findable.
+keywords:
+  - ACTRIS
+  - equivalent black carbon
+  - eBC
+
+# License information for this resource. Please provide the license name and/or a link to the license.
+# Please add also a corresponding LICENSE file to the repository.
+license:
+  name: "CCBY4 Data Licence"
+  url: "https://creativecommons.org/licenses/by/4.0/"
+
+
+## Optional Fields
+
+# Funding information for this resource.
+# Separate funder name and grant number by comma.
+funding:
+  -
+    funderName: European Commission
+    funderIdentifier: "https://ror.org/00k4n6c32"
+    funderIdentifierType: "ROR"
+    awardURI: "https://cordis.europa.eu/project/id/101017536"
+    awardNumber: "101017536"
+    awardTitle:  "EOSC Future"
+
+# Related publications. reftype might be: IsSupplementTo, IsDescribedBy, IsReferencedBy.
+# Please provide digital identifier (e.g., DOI) if possible.
+# Add a prefix to the ID, separated by a colon, to indicate the source.
+# Supported sources are: DOI, arXiv, PMID
+# In the citation field, please provide the full reference, including title, authors, journal etc.
+references:
+  -
+    id: "doi:10.xxx/zzzz"
+    reftype: "IsSupplementTo"
+    citation: "Citation1"
+  -
+    id: "arxiv:mmmm.nnnn"
+    reftype: "IsSupplementTo"
+    citation: "Citation2"
+  -
+    id: "pmid:nnnnnnnn"
+    reftype: "IsReferencedBy"
+    citation: "Citation3"
+
+
+# Resource type. Default is Dataset, other possible values are Software, DataPaper, Image, Text.
+resourcetype: Dataset
+
+# Section 2
+
+# The following section is in regards to the technical specification for access to the scientific key indicator dashboard. We will start all keys with SD_ for Scientific Dashboard
+
+# provide the URL to access an iframe (HTML webpage) which should be displayed
+# base is the base URL (mandatory) which can work on its own,
+# or you can provide additional parameters. IF parameters are available, URL is assembled as
+# BASE?param1=...&param2=...
+# content for the parameter may be provided with a list
+# the following example will display the 'Key' in a dropdown list
+# where as the url is assembled from the list in the same order as the
+# parameters are listed
+
+# Who made the plugin
+SD_provider: "ACTRIS DC"
+
+# Link to png/jpg-logo - here we assume we have height="40" and width="40"
+SD_logo_url: "https://www.actris.eu/sites/default/files/inline-images/Actris%20logo.png"
+
+# Available plugins are displayed in a dropdown menu
+SD_URL:
+    plugin_label: 'Station'
+    base_url: https://folk.nilu.no/~ebas/eosc-future/
+    param1:
+    'Jungfraujoch': 'jungfraujoch.html'
+    'BEO Moussala': 'beo.html'
+    'K-puszta': 'kpuszta.html'
+    'Izana': 'izana.html'
+    'Zeppelin mountain (Ny-Ålesund)': 'zeppelin.html'
+    'Melpitz': 'melpitz.html'
+    'Leipzig-Eisenbahnstrasse': 'leipzigeisenbahnstrasse.html'
+    'Hyytiälä': 'hyytiälä.html'
+    param2:
+
+#preferred size for the widget in pixel
+SD_width: 150
+SD_height: 300
+
+
+# Section 3
+# the folloing section contains plugin specifics
+
+plugin_version: 1.0
+plugin_template: 1.0
+plugin_author: 'Richard Rud'
+plugin_contact: 'ror@nilu.no'
+plugin_token: 'not used yet, but potential for authorization, authentication'
+
+
+

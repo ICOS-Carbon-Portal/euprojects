@@ -1,0 +1,157 @@
+# Index file
+
+
+
+# Metadata for DOI registration according to DataCite Metadata Schema 4.1.
+# For detailed schema description see https://doi.org/10.5438/0014
+
+## Required fields
+
+# The main researchers involved. Include digital identifier (e.g., ORCID)
+# if possible, including the prefix to indicate its type.
+authors:
+  -
+    firstname: "Jane"
+    lastname: "Due"
+    affiliation: "European University, 2nd Dummy Portal"
+    id: "ORCID:0000-0002-1982-3889"
+
+  -
+    firstname: "Alex"
+    lastname: "Vermeulen"
+    affiliation: "ICOS ERIC"
+    id: "ORCID:0000-0002-8158-8787"
+
+# A title to describe the published resource.
+title: "Another data specialist"
+
+# Additional information about the resource, e.g., a brief abstract.
+description: |
+  Realtime insitu measurments of greenhouse gasses
+  at different ICOS stations. Available is
+  Methane (CH4), Carbon Dioxide (CO2), and Carbon Monoxide (CO)
+  
+# Lit of keywords the resource should be associated with.
+# Give as many keywords as possible, to make the resource findable.
+keywords:
+  - ICOS
+  - Greenhouse gas concentration
+  - CH4
+  - CO2
+  - CO
+
+# License information for this resource. Please provide the license name and/or a link to the license.
+# Please add also a corresponding LICENSE file to the repository.
+license:
+  name: "ICOS CCBY4 Data Licence"
+  url: "http://meta.icos-cp.eu/ontologies/cpmeta/icosLicence"
+
+
+## Optional Fields
+
+# Funding information for this resource.
+# Separate funder name and grant number by comma.
+funding:
+  -
+    funderName: European Commission
+    funderIdentifier: "https://ror.org/00k4n6c32"
+    funderIdentifierType: "ROR"
+    awardURI: "https://cordis.europa.eu/project/id/101017536"
+    awardNumber: "101017536"
+    awardTitle:  "EOSC Future"
+    
+# Related publications. reftype might be: IsSupplementTo, IsDescribedBy, IsReferencedBy.
+# Please provide digital identifier (e.g., DOI) if possible.
+# Add a prefix to the ID, separated by a colon, to indicate the source.
+# Supported sources are: DOI, arXiv, PMID
+# In the citation field, please provide the full reference, including title, authors, journal etc.
+references:
+  -
+    id: "doi:10.xxx/zzzz"
+    reftype: "IsSupplementTo"
+    citation: "Citation1"
+  -
+    id: "arxiv:mmmm.nnnn"
+    reftype: "IsSupplementTo"
+    citation: "Citation2"
+  -
+    id: "pmid:nnnnnnnn"
+    reftype: "IsReferencedBy"
+    citation: "Citation3"
+
+
+# Resource type. Default is Dataset, other possible values are Software, DataPaper, Image, Text.
+resourcetype: Dataset
+
+
+# The following section is in regards to the technical specification for access to the scientific key indicator dashboard. We will start all keys with SD_ for Scientific Dashboard 
+
+# provide the URL to access an iframe (HTML webpage) which should be displayed
+# base is the base URL (mandatory) which can work on its own,
+# or you can provide additional parameters. IF parameters are available, URL is assembled as
+# BASE?param1=...&param2=...
+# content for the parameter may be provided with a list
+# the following example will display the 'Key' in a dropdown list
+# where as the url is assembled from the list in the same order as the 
+# parameters are listed
+
+# Who made the plugin
+SD_provider: "SeaDataNet"
+
+# Here we assume we have width="40" for the logo which is a .png/.jpg
+SD_logo_url: "https://www.icos-cp.eu/sites/default/files/2017-11/ICOS_CP_logo.png"
+
+# Available plugins are displayed in a dropdown menu 
+SD_URL:
+    plugin_label: 'Some links'
+    base_url: https://data.icos-cp.eu/dashboard/            
+    param1:
+        'Birkenes': '?stationId=BIR&valueType=co&height=50'
+        'Birkenes': '?stationId=BIR&valueType=co2&height=75'
+        'Gartow': '?stationId=GAT&valueType=co2&height=341'
+        'Helgoland': '?stationId=HEL&valueType=co2&height=110'
+        'Hohenpeissenberg': '?stationId=HPB&valueType=co2&height=131'
+        'Hyltemossa': '?stationId=HTM&valueType=co2&height=150'
+        'Hyytiälä': '?stationId=SMR&valueType=co2&height=125'
+        'Ispra': '?stationId=IPR&valueType=co2&height=100'
+        'Jungfraujoch': '?stationId=JFJ&valueType=co2&height=5'
+        'Jülich': '?stationId=JUE&valueType=co2&height=120'
+        'Karlsruhe': '?stationId=KIT&valueType=co2&height=200'
+        'Křešín u Pacova': '?stationId=KRE&valueType=co2&height=250'
+        'La Réunion': '?stationId=RUN&valueType=co2&height=6'
+        'Lampedusa': '?stationId=LMP&valueType=co2&height=8'
+        'Lindenberg': '?stationId=LIN&valueType=co2&height=98'
+        'Lutjewad': '?stationId=LUT&valueType=co2&height=60'
+        'Monte Cimone': '?stationId=CMN&valueType=co2&height=8'
+        'Norunda': '?stationId=NOR&valueType=co2&height=100'
+        'Observatoire pérenne': '?stationId=OPE&valueType=co2&height=120'
+        'Ochsenkopf': '?stationId=OXK&valueType=co2&height=163'
+        'Pallas': '?stationId=PAL&valueType=co2&height=12'
+        'Plateau Rosa': '?stationId=PRS&valueType=co2&height=10'
+        'Puijo': '?stationId=PUI&valueType=co2&height=84'
+        'Puy de Dôme': '?stationId=PUY&valueType=co2&height=10'
+        'Saclay': '?stationId=SAC&valueType=co2&height=100'
+        'Steinkimmen': '?stationId=STE&valueType=co2&height=252'
+        'Svartberget': '?stationId=SVB&valueType=co2&height=150'
+        'Torfhaus': '?stationId=TOH&valueType=co2&height=147'
+        'Trainou': '?stationId=TRN&valueType=co2&height=180'
+        'Utö - Baltic sea': '?stationId=UTO&valueType=co2&height=57'
+        'Westerland': '?stationId=WES&valueType=co2&height=14'
+        'Weybourne': '?stationId=WAO&valueType=co2&height=10'
+        'Zeppelin': '?stationId=ZEP&valueType=co2&height=15'
+        'Zugspitze': '?stationId=ZSF&valueType=co2&height=3'
+    param2:
+ 
+ 
+#preferred size for the widget in pixel
+SD_width: 150
+SD_height: 300
+
+# the folloing section contains plugin specifics
+
+plugin_version: 1.0
+plugin_template: 1.0
+plugin_author: 'claudio donofrio'
+plugin_contact: 'claudio.donofrio@nateko.lu.se'
+plugin_token: 
+
