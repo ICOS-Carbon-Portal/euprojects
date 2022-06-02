@@ -1,0 +1,151 @@
+
+# The template is divided in three sections
+# 1. Metadata to be compatible with data cite, in case of creating a DOI 
+# 2. Information about the plug in or service 
+# 3. Meta data about the yaml file
+
+# Section 1
+# Metadata for DOI registration according to DataCite Metadata Schema 4.1.
+# For detailed schema description see https://doi.org/10.5438/0014
+
+## Required fields
+
+# The main researchers involved. Include digital identifier (e.g., ORCID)
+# if possible, including the prefix to indicate its type.
+authors:
+  -
+    firstname: "Tjerk"
+    lastname: "Krijger"
+    affiliation: "MARIS"
+    id: "ORCID:0000-0002-1722-0523"
+
+  -
+    firstname: ""
+    lastname: ""
+    affiliation: ""
+    id: ""
+
+# A title to describe the published resource.
+title: "Global ocean mapping of in-situ measurements of Oxygen, Temperature, Nutrients and pH."
+
+# Additional information about the resource, e.g., a brief abstract.
+description: |
+  The ocean component consists of a Map Viewer that displays in-situ measurements of the Essential Ocean Variables (EOVs)
+  Temperature, Oxygen, Nutrients and pH. These measurements are retrieved from the Blue Data Infrastructures (BDIs) Euro-Argo 
+  and SeaDataNet CDI using tailor-made APIs for fast sub-setting. The viewer includes a user interface designed for citizen scientists 
+  with the possibility to interact with the data by using sliders for time and depth. Background layers from CMEMS are used to compare 
+  the in-situ measurements with modelling and satellite products.  
+
+  The in-situ data available for different locations, depths and time periods are used to create scientifically justified aggregated 
+  values that feed the dynamic trend indicators at the 1st level of the dashboard, with some configuration options. For the ocean 
+  component, the environmental dashboard (level 1) hence includes a number of ocean trend indicators for the chosen EOVs, providing a 
+  trend in time for designated areas. While, users can then click on such an indicator guiding them to the Map Viewer (level 2) to browse
+  deeper into the data and details facilitating the trends.
+  
+  
+# List of keywords the resource should be associated with.
+# Give as many keywords as possible, to make the resource findable.
+keywords:
+  - EOV
+  - Global ocean 3D distribution
+  - Oxygen
+  - Nutrients
+  - Temperature
+  - pH
+  - Silicate
+  - Phosphate
+  - Nitrate
+  - Global in-situ measurements
+  - EOV trends
+  - Ocean trend indicator
+
+# License information for this resource. Please provide the license name and/or a link to the license.
+# Please add also a corresponding LICENSE file to the repository.
+license:
+  name: "CCBY4 Data Licence"
+  url: "https://creativecommons.org/licenses/by/4.0/"
+
+
+## Optional Fields
+
+# Funding information for this resource.
+# Separate funder name and grant number by comma.
+funding:
+  -
+    funderName: European Commission
+    funderIdentifier: "https://ror.org/00k4n6c32"
+    funderIdentifierType: "ROR"
+    awardURI: "https://cordis.europa.eu/project/id/101017536"
+    awardNumber: "101017536"
+    awardTitle:  "EOSC Future"
+    
+# Related publications. reftype might be: IsSupplementTo, IsDescribedBy, IsReferencedBy.
+# Please provide digital identifier (e.g., DOI) if possible.
+# Add a prefix to the ID, separated by a colon, to indicate the source.
+# Supported sources are: DOI, arXiv, PMID
+# In the citation field, please provide the full reference, including title, authors, journal etc.
+references:
+  -
+    id: "doi:10.xxx/zzzz"
+    reftype: "IsSupplementTo"
+    citation: "Citation1"
+  -
+    id: "arxiv:mmmm.nnnn"
+    reftype: "IsSupplementTo"
+    citation: "Citation2"
+  -
+    id: "pmid:nnnnnnnn"
+    reftype: "IsReferencedBy"
+    citation: "Citation3"
+
+
+# Resource type. Default is Dataset, other possible values are Software, DataPaper, Image, Text.
+resourcetype: Dataset
+
+# Section 2
+
+# The following section is in regards to the technical specification for access to the scientific key indicator dashboard. We will start all keys with SD_ for Scientific Dashboard 
+
+# provide the URL to access an iframe (HTML webpage) which should be displayed
+# base is the base URL (mandatory) which can work on its own,
+# or you can provide additional parameters. IF parameters are available, URL is assembled as
+# BASE?param1=...&param2=...
+# content for the parameter may be provided with a list
+# the following example will display the 'Key' in a dropdown list
+# where as the url is assembled from the list in the same order as the 
+# parameters are listed
+
+# Who made the plugin
+SD_provider: "MARIS"
+
+# Link to png/jpg-logo - here we assume we have height="40" and width="40" 
+SD_logo_url: 
+
+# Available plugins are displayed in a dropdown menu 
+SD_URL:
+    plugin_label: 'Mediterranean Sea Region'
+    base_url: https://eosc-future.maris.nl/indicator/            
+    param1: 
+        'Western Mediterranean': 'wmed/temp/0-50/2000-2010/Seasonal_Temperature_Mean.png'
+        'Western Mediterranean': 'wmed/temp/50-500/2000-2010/Seasonal_Temperature_Mean.png'        
+        'Northwestern Mediterranean': 'nwmed/temp/0-50/2000-2010/Seasonal_Temperature_Mean.png'
+        'Northwestern Mediterranean': 'nwmed/temp/50-500/2000-2010/Seasonal_Temperature_Mean.png'
+    param2: 
+ 
+#preferred size for the widget in pixel
+SD_width: 150
+SD_height: 300
+ 
+
+# Section 3
+# the folloing section contains plugin specifics
+
+plugin_version: 1.0
+plugin_template: 1.0
+plugin_author: 'tjerk@maris.nl'
+plugin_contact: 'tjerk@maris.nl'
+plugin_token: 'not used yet, but potential for authorization, authentication'
+
+
+
+
