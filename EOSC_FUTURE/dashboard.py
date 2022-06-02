@@ -69,4 +69,10 @@ def update_output_div(input_value):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    # The application runs in a docker container on ganymede. External
+    # users make requests to https://future.ganymede.icos-cp.eu/
+    # (port 443) which are then proxy passed to port 8081 on ganymede
+    # and then to port 8080 in the application's docker container.
+    # The `ssl_context='adhoc'` parameter is used to quickly serve an
+    # application over HTTPS without having to mess with certificates.
+    app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
