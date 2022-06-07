@@ -89,23 +89,29 @@ resourcetype: Dataset
 # provide the URL to access an iframe (HTML webpage) which should be displayed
 # base is the base URL (mandatory) which can work on its own,
 # or you can provide additional parameters. IF parameters are available, URL is assembled as
-# BASE?param1=...&param2=...
+# BASE?parameters=...
 # content for the parameter may be provided with a list
 # the following example will display the 'Key' in a dropdown list
 # where as the url is assembled from the list in the same order as the
 # parameters are listed
 
 # Who made the plugin
-SD_provider: "Euro-Argo"
+SD_provider: "Euro-Argo ERIC"
+
+# This is the display name in the dashboard to select the plugin.
+SD_provider_abbreviation: "Euro-Argo"
 
 # Here we assume we have width="40" for the logo which is a .png/.jpg
 SD_logo_url: "https://www.icos-cp.eu/sites/default/files/2017-11/ICOS_CP_logo.png"
+
+# The following link points to the main indicator website at the research infrastructure.
+SD_link: "https://www.euro-argo.eu/"
 
 # Available plugins are displayed in a dropdown menu
 SD_URL:
     plugin_label: 'Some links'
     base_url: https://data.icos-cp.eu/dashboard/
-    param1:
+    parameters:
         'Birkenes': '?stationId=BIR&valueType=co&height=50'
         'Birkenes': '?stationId=BIR&valueType=co2&height=75'
         'Gartow': '?stationId=GAT&valueType=co2&height=341'
@@ -140,7 +146,6 @@ SD_URL:
         'Weybourne': '?stationId=WAO&valueType=co2&height=10'
         'Zeppelin': '?stationId=ZEP&valueType=co2&height=15'
         'Zugspitze': '?stationId=ZSF&valueType=co2&height=3'
-    param2:
 
 
 #preferred size for the widget in pixel
