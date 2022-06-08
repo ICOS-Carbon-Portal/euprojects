@@ -4,15 +4,12 @@ import dashContent
 
 dashContent.init_data()
 
-# Store dashboards locally,
-# used by checklist-callback
-dashboard_dict = {}
 
 # We use this in checklist-callback
 # to preserve objects
 # (Also... it is not possible to just use the list!
 # ... bug or a good reason?)
-dict2 = {'previous_dashboards': []}
+dashboard_dict = {'previous_dashboards': []}
 
 
 infrastructure_checklist = dashContent.main_menu()
@@ -74,19 +71,16 @@ def update_output_div(input_value, children_list):
     # right after it been executed.
     if input_value is None:
         return
-    prev_dash_list = dict2['previous_dashboards']
-
     frame_containers = []
+    prev_dash_list = dashboard_dict['previous_dashboards']
 
     if input_value:
         if len(prev_dash_list) > 0:
             # remove old items
             for old_item in list(set(prev_dash_list).difference(input_value)):
-                # print('We must remove ', old_item, ' from prev_dash_list ', prev_dash_list)
                 old_index = prev_dash_list.index(old_item)
                 prev_dash_list.remove(old_item)
                 children_list.pop(old_index)
-                # print('Removed ', old_item, ' from prev_dash_list: ', prev_dash_list)
 
         for item in input_value:
             # reuse common objects
@@ -98,7 +92,7 @@ def update_output_div(input_value, children_list):
                 prev_dash_list.append(item)
                 frame_containers.append(dashContent.fetch_div(item))
 
-    dict2['previous_dashboards'] = prev_dash_list
+    dashboard_dict['previous_dashboards'] = prev_dash_list
 
     # print(request.remote_addr, input_value)
     return frame_containers
@@ -111,5 +105,5 @@ if __name__ == '__main__':
     # and then to port 8080 in the application's docker container.
     # The `ssl_context='adhoc'` parameter is used to quickly serve an
     # application over HTTPS without having to mess with certificates.
-    #app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
-    app.run(debug=True, port=8055)    # to be removed
+    app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
+    # app.run(debug=True, port=8055)    # to be removed
