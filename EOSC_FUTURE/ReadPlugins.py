@@ -61,7 +61,7 @@ class EoscValueObject:
             if plug != '.ipynb_checkpoints':
                 config = self.__validate_plugin__(plug)
                 try:
-                    self._SD_providers.append(config.pop('SD_provider'))
+                    self._SD_providers.append(config.pop('SD_provider_abbreviation'))
                 except Exception as e:
                     print(plug, '\n', config, '\n', e)
                 self._plug_dict[self._SD_providers[-1]] = config
@@ -97,7 +97,9 @@ class EoscValueObject:
                 # parse the file
                 cfg = yaml.load(config, Loader=yaml.FullLoader)
                 # validation 1: check for mandatory keys
-                mandatory_keys = {'SD_provider', 'authors', 'title',
+                mandatory_keys = {'SD_provider',
+                                  'SD_provider_abbreviation',
+                                  'SD_link', 'authors', 'title',
                                   'description', 'keywords', 'license', 
                                   'funding', 'resourcetype', 'SD_URL'}
                 provided_keys = cfg.keys()

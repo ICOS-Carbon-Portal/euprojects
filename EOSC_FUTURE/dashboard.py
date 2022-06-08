@@ -1,21 +1,27 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, html, Input, Output
 from flask import request
-from ReadPlugins import EoscValueObject
-
-sd_data_obj = EoscValueObject()
+import dashContent
 
 
-app = Dash(__name__, )
+# We use this in checklist-callback
+# to preserve objects
+# (Also... it is not possible to just use the list!
+# ... bug or a good reason?)
+dashboard_dict = {'previous_dashboards': []}
 
-infrastructure_checklist = dcc.Checklist(
-    className='input-checklist',
-    id='input-checklist',
-    options=sd_data_obj.get_providers(),
-    # labelStyle={'display': 'block'},
-    inputClassName='input-checkbox',
-    labelClassName='label-input'
-)
+dashContent.init_data()
 
+infrastructure_checklist = dashContent.main_menu()
+
+# Below we set
+#     `suppress_callback_exceptions=True`
+# in order to suppress exceptions when app.callbacks
+# are created to non-existing objects.
+app = Dash(__name__,
+           suppress_callback_exceptions=True,
+           title="EOSC Future - State of the Environment")
+
+# Main layout
 app.layout = html.Div([
     html.Div(children=[
         html.Div(className='header-container', children=[
@@ -34,38 +40,61 @@ app.layout = html.Div([
         html.Div(className='output', id='my-output')
     ])])
 
+# In order to create callbacks from start we need to
+# initialize possible component id's even though the
+# objects are not yet created.
+# Each id must be unique, and hence the dash content with a
+# specific id must only be loaded once per provider.
+# Also, the comment on suppress_callback_exceptions at app = ....
+provider_id_list = [dashContent.get_provider_id(p) for p in dashContent.provider_list]
+
+for provider in provider_id_list:
+    @app.callback(
+        Output(component_id=f'{provider}-frame', component_property='src'),
+        Input(component_id=f'{provider}-drop', component_property='value'),
+        # State(component_id=f'{provider}-frame', component_property='src'),
+        prevent_initial_call=True
+    )
+    def update_frame(link):  # def update_frame(link, src): if we want to cancel?
+        return link
+
 
 @app.callback(
     Output(component_id='my-output', component_property='children'),
-    Input(component_id='input-checklist', component_property='value')
+    [Input(component_id='input-checklist', component_property='value'),
+     Input(component_id='my-output', component_property='children')]
 )
-def update_output_div(input_value):
-    frame_containers = list()
+def update_output_div(input_value, children_list):
+
+    # We don't want to run this
+    # right after it been executed.
+    if input_value is None:
+        return
+    frame_containers = []
+    prev_dash_list = dashboard_dict['previous_dashboards']
+
     if input_value:
+        if len(prev_dash_list) > 0:
+            # remove old items
+            for old_item in list(set(prev_dash_list).difference(input_value)):
+                old_index = prev_dash_list.index(old_item)
+                prev_dash_list.remove(old_item)
+                children_list.pop(old_index)
+
         for item in input_value:
-            if item == 'ICOS':
-                my_source = 'https://data.icos-cp.eu/dashboard/?stationId=BIR&valueType=co&height=50'
-            elif item == 'INGOS':
-                my_source = 'https://www.ingos-infrastructure.eu/'
-            elif item == 'NEON':
-                my_source = 'assets/static-html/neon.html'
-            elif item == 'OCEAN':
-                my_source = 'assets/static-html/ocean.html'
+            # reuse common objects
+            if item in prev_dash_list:
+                keep_index = prev_dash_list.index(item)
+                frame_containers.append(children_list[keep_index])
             else:
-                my_source = '/assets/static-html/folium_map.html'
-            frame_div = html.Div(
-                className='frame-container',
-                children=[
-                    html.Iframe(
-                        className='infrastructure-frame',
-                        src=my_source,
-                        title=item,
-                    )])
-            frame_containers.append(frame_div)
-    print(request.remote_addr)
+                # create new objects
+                prev_dash_list.append(item)
+                frame_containers.append(dashContent.fetch_div(item))
+
+    dashboard_dict['previous_dashboards'] = prev_dash_list
+
+    # print(request.remote_addr, input_value)
     return frame_containers
-    # box = html.Div(className='sth', children=frame_containers)
-    # return box
 
 
 if __name__ == '__main__':
@@ -76,3 +105,4 @@ if __name__ == '__main__':
     # The `ssl_context='adhoc'` parameter is used to quickly serve an
     # application over HTTPS without having to mess with certificates.
     app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
+    # app.run(debug=True, port=8055)    # to be removed

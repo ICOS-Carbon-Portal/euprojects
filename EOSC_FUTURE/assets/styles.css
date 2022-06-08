@@ -1,3 +1,47 @@
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: 10%;
+  }
+
+.header-container {
+    background-image: linear-gradient(135deg, #feb73a 70%, #fd8651 100%);
+    display: flex;
+}
+
+.header-image {
+    width: 150px;
+}
+
+.flex-child-image {
+    flex: 0 0 auto;
+    margin-right: 1em;
+}
+
+.flex-child-headings {
+    flex: 0 0 auto;
+    margin-left: 1em;
+    white-space: nowrap;
+}
+
+h1 {
+    margin-top: 25px;
+    margin-bottom: 0px;
+    color: #fff;
+    font-size: 3rem;
+    /*line-height: 1em;*/
+    font-family: "Teko",sans-serif;
+}
+
+h2 {
+    margin-top: 0px;
+    color: #fff;
+    font-family: "Ubuntu",sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
 .input-checklist {
     display: block;
     width: fit-content;
@@ -38,52 +82,136 @@
     flex-wrap: wrap;
     gap: 10px 60px;
     margin: 10px 0px 0px 10px;
-}
-
-.frame-container {
-    /*flex-basis: content;*/
-    /*width: auto;*/
-    /*height: 100%;*/
-}
-
-.infrastructure-frame {
-    width: 100%;
-    height: 40vh;
-}
-
-.header-container {
-    background-image: linear-gradient(135deg, #feb73a 70%, #fd8651 100%);
-    display: flex;
-}
-
-.header-image {
-    width: 150px;
-}
-
-.flex-child-image {
-    flex: 0 0 auto;
-    margin-right: 1em;
-}
-
-.flex-child-headings {
-    flex: 0 0 auto;
-    margin-left: 1em;
-    white-space: nowrap;
-}
-
-h1 {
-    margin-top: 25px;
-    margin-bottom: 0px;
-    color: #fff;
-    font-size: 3rem;
-    /*line-height: 1em;*/
-    font-family: "Teko",sans-serif;
-}
-
-h2 {
-    margin-top: 0px;
-    color: #fff;
-    font-family: "Ubuntu",sans-serif;
-    font-size: 2rem;
+    font-family: "Ubuntu", sans-serif;
     font-weight: normal;
+    font-size: 18px;
 }
+
+/* the outer most tab container */
+.tab-outer-container{
+    width: max(280px,min(400px,80vh));
+    height: max(560px,min(800px,60vh));
+    align:center;
+    align-content: center;
+}
+
+/* Tab menu container */
+.tab-container{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom:2px;
+    width: 100%;
+}
+.tab-content{
+    height:99%;
+    width: 100%;
+}
+
+.tab-menu{
+    padding-top: 12px
+    width:100%;
+    align: center;
+    align-content: center;
+    justify-content:center;
+}
+
+.tab-parent{
+width: 100%;
+height: 100%;
+align: center
+}
+
+.tab{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: 3px solid transparent !important;
+    border-left: 3px solid lightgrey !important;
+    border-right: 31px solid lightgrey !important;
+    border-left: 3px !important;
+    border-right: 0px !important;
+    border-bottom: 0px !important;
+    background-color: #fafbfc;
+    padding: 10px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* content below tab-menu*/
+.tab-column{
+    height: 99%;
+    margin: 0px;
+    padding: 5px;
+    border: 1px solid lightgrey !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-tab-row{
+    justify-content: center;
+    align: top;
+    border-bottom: 1px solid #e36209 !important;
+    border-top: 3px solid #e36209 !important;
+    margin: 0px 0px 0px 0px;
+    }
+
+.tab--selected {
+    top-margin:0px !important;
+    color: black;
+    box-shadow: 1px 1px 0px white;
+    border-left: 1px solid lightgrey !important;
+    border-right: 1px solid lightgrey !important;
+    border-top: 3px solid #e36209 !important;
+}
+
+/* provider logo - not eosc logo*/
+.logo-img{
+    margin-top: 2px;
+    margin-right: 2px;
+    float: right;
+    width: 90%;
+}
+
+a {
+    width: 100%;
+    height: 100%
+}
+
+/* rows in the tab */
+.tab-row{
+    margin:0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dash-dropdown{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* the iframe */
+.frame-container {
+    margin: 0px 0px 0px 0px;
+    width: 280px;
+    height: 320px;
+
+ }
+
+.tab-2-content{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-3-content{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+}
+

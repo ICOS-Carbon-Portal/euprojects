@@ -89,24 +89,23 @@ resourcetype: Dataset
 # provide the URL to access an iframe (HTML webpage) which should be displayed
 # base is the base URL (mandatory) which can work on its own,
 # or you can provide additional parameters. IF parameters are available, URL is assembled as
-# BASE?parameters=...
+# BASE?param1=...&param2=...
 # content for the parameter may be provided with a list
 # the following example will display the 'Key' in a dropdown list
 # where as the url is assembled from the list in the same order as the
 # parameters are listed
 
 # Who made the plugin
-SD_provider: "ACTRIS DC"
+SD_provider: "One html Link Test"
 
 # This is the display name in the dashboard to select the plugin.
-SD_provider_abbreviation: "ACTRIS"
-
+SD_provider_abbreviation: "One link test"
 
 # Link to png/jpg-logo - here we assume we have height="40" and width="40"
 SD_logo_url: "https://www.actris.eu/sites/default/files/inline-images/Actris%20logo.png"
 
 # The following link points to the main indicator website at the research infrastructure.
-SD_link: "https://www.actris.eu/access-services"
+SD_link: "https://eosc-future.maris.nl/indicator/"
 
 # Available plugins are displayed in a dropdown menu
 SD_URL:
@@ -114,13 +113,7 @@ SD_URL:
     base_url: https://folk.nilu.no/~ebas/eosc-future/
     parameters:
         'Jungfraujoch': 'jungfraujoch.html'
-        'BEO Moussala': 'beo.html'
-        'K-puszta': 'kpuszta.html'
-        'Izana': 'izana.html'
-        'Zeppelin mountain (Ny-Ålesund)': 'zeppelin.html'
-        'Melpitz': 'melpitz.html'
-        'Leipzig-Eisenbahnstrasse': 'leipzigeisenbahnstrasse.html'
-        'Hyytiälä': 'hyytiälä.html'
+
 
 #preferred size for the widget in pixel
 SD_width: 150
