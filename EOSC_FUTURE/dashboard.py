@@ -2,8 +2,6 @@ from dash import Dash, html, Input, Output
 from flask import request
 import dashContent
 
-dashContent.init_data()
-
 
 # We use this in checklist-callback
 # to preserve objects
@@ -11,11 +9,12 @@ dashContent.init_data()
 # ... bug or a good reason?)
 dashboard_dict = {'previous_dashboards': []}
 
+dashContent.init_data()
 
 infrastructure_checklist = dashContent.main_menu()
 
 # Below we set
-#           `suppress_callback_exceptions=True`
+#     `suppress_callback_exceptions=True`
 # in order to suppress exceptions when app.callbacks
 # are created to non-existing objects.
 app = Dash(__name__,
