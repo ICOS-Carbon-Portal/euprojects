@@ -1,6 +1,7 @@
 from dash import Dash, html, Input, Output
 from flask import request
 import dashContent
+import os
 
 
 # We use this in checklist-callback
@@ -19,7 +20,7 @@ infrastructure_checklist = dashContent.main_menu()
 # are created to non-existing objects.
 app = Dash(__name__,
            suppress_callback_exceptions=True,
-           title="EOSC Future - State of the Environment")
+           title='ENVRI - State of the Environment')
 
 # Main layout
 app.layout = html.Div([
@@ -105,4 +106,3 @@ if __name__ == '__main__':
     # The `ssl_context='adhoc'` parameter is used to quickly serve an
     # application over HTTPS without having to mess with certificates.
     app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
-    # app.run(debug=True, port=8055)    # to be removed
