@@ -80,7 +80,9 @@ def update_output_div(input_value, children_list):
             for old_item in list(set(prev_dash_list).difference(input_value)):
                 old_index = prev_dash_list.index(old_item)
                 prev_dash_list.remove(old_item)
-                children_list.pop(old_index)
+                # Not a complete fix. Just catches some cases.
+                if children_list:
+                    children_list.pop(old_index)
 
         for item in input_value:
             # reuse common objects
