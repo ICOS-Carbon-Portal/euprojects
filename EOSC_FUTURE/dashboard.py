@@ -74,7 +74,13 @@ def update_output_div(input_value, children_list):
     frame_containers = []
     prev_dash_list = dashboard_dict['previous_dashboards']
 
+    if children_list is None or \
+            (isinstance(children_list, list) and
+             children_list == []):
+        prev_dash_list = []
+
     if input_value:
+
         if len(prev_dash_list) > 0:
             # remove old items
             for old_item in list(set(prev_dash_list).difference(input_value)):
