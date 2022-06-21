@@ -30,7 +30,7 @@ title: ""
 
 # Additional information about the resource, e.g., a brief abstract.
 description: |
-  Please write the description here,
+  Pleaser write the description here,
   you can use multiple lines
   
   
@@ -84,16 +84,12 @@ references:
 # Resource type. Default is Dataset, other possible values are Software, DataPaper, Image, Text.
 resourcetype: Dataset
 
-
 # Section 2
 
 # The following section is in regards to the technical specification for access to the scientific key indicator dashboard. We will start all keys with SD_ for Scientific Dashboard 
 
 # Who made the plugin
 SD_provider: "Template Portal"
-
-# Topic of data provider A = Atmosphere, B = Biod, O = Ocean
-SD_topic: "O"
 
 # This is the display name in the dashboard to select the plugin.
 SD_provider_abbreviation: "Temp"
@@ -127,15 +123,8 @@ SD_height: 300
 # Section 3
 # the folloing section contains plugin specifics
 
-#Version of plugin of individual data provider 
-#Example: ICOS changed the description. 
-plugin_version: 1.0
-
-#Version of this template.
-#That is, if there is some new key or 
-#if some key has been removed etc)
+plugin_version: 1.1
 plugin_template: 1.1
-
 plugin_author: 'email@organisation.com'
 plugin_contact: 'email@organisation.com'
 plugin_token: 'not used yet, but potential for authorization, authentication'
