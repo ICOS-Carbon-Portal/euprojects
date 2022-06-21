@@ -11,38 +11,36 @@
 # if possible, including the prefix to indicate its type.
 authors:
   -
-    firstname: "Damien"
-    lastname: "Boulanger"
-    affiliation: "CNRS, IAGOS Data Centre"
-    id: "ORCID: 0000-0001-6935-1106 "
+    firstname: "John"
+    lastname: "Due"
+    affiliation: "Fine University, Some Portal"
+    id: "ORCID:0000-0002-9191-91919"
+
+  -
+    firstname: ""
+    lastname: ""
+    affiliation: "" 
+    id: ""
 
 # A title to describe the published resource.
-title: "IAGOS near Real Time (NRT) means of atmospheric concentration of O3/CO/H2O"
-
+title: "Some data for you"
 # Additional information about the resource, e.g., a brief abstract.
 description: |
-  Means concentrations calculated with NRT and fully qualified in situ measurements of reactive and greenhouse gases
-  at different airports visited by the IAGOS fleet. 
-  Available is Ozone (O3), Water vapor gas (H2O_gas) and relative humidity (RH) and Carbon Monoxide (CO)
-  
+  Data of all sorts 
+  look and you will find
+    
 # Lit of keywords the resource should be associated with.
 # Give as many keywords as possible, to make the resource findable.
 keywords:
-  - IAGOS
-  - Greenhouse gas concentration
-  - Reactive gas concentration
-  - O3
-  - H2O
-  - CO
-  - Ozone
-  - Carbon monoxide
-  - Water vapor
-
+  - Data
+  - Graphs
+  - csv
+  
 # License information for this resource. Please provide the license name and/or a link to the license.
 # Please add also a corresponding LICENSE file to the repository.
 license:
-  name: "IAGOS CC-BY 4.0 Data Licence"
-  url: "https://iagos.aeris-data.fr/data-policy/"
+  name: "Gnu Licence 1.0"
+  url: ""
 
 
 ## Optional Fields
@@ -58,61 +56,100 @@ funding:
     awardNumber: "101017536"
     awardTitle:  "EOSC Future"
     
+# Related publications. reftype might be: IsSupplementTo, IsDescribedBy, IsReferencedBy.
+# Please provide digital identifier (e.g., DOI) if possible.
+# Add a prefix to the ID, separated by a colon, to indicate the source.
+# Supported sources are: DOI, arXiv, PMID
+# In the citation field, please provide the full reference, including title, authors, journal etc.
 references:
   -
     id: "doi:10.xxx/zzzz"
     reftype: "IsSupplementTo"
     citation: "Citation1"
+  -
+    id: "arxiv:mmmm.nnnn"
+    reftype: "IsSupplementTo"
+    citation: "Citation2"
+  -
+    id: "pmid:nnnnnnnn"
+    reftype: "IsReferencedBy"
+    citation: "Citation3"
 
 
 # Resource type. Default is Dataset, other possible values are Software, DataPaper, Image, Text.
 resourcetype: Dataset
+
 
 # The following section is in regards to the technical specification for access to the scientific key indicator dashboard. We will start all keys with SD_ for Scientific Dashboard 
 
 # provide the URL to access an iframe (HTML webpage) which should be displayed
 # base is the base URL (mandatory) which can work on its own,
 # or you can provide additional parameters. IF parameters are available, URL is assembled as
-# BASE?param1=...&param2=...
+# BASE?parameters=...
 # content for the parameter may be provided with a list
 # the following example will display the 'Key' in a dropdown list
 # where as the url is assembled from the list in the same order as the 
 # parameters are listed
 
 # Who made the plugin
-SD_provider: "IAGOS Data Centre"
+SD_provider: "In-service Aircraft for a Global Observing System"
 
 # This is the display name in the dashboard to select the plugin.
 SD_provider_abbreviation: "IAGOS"
 
-
-SD_topic: "A"
-
 # Here we assume we have width="40" for the logo which is a .png/.jpg
-SD_logo_url: "https://www7.obs-mip.fr/wp-content-aeris/uploads/sites/41/2020/02/Logo_Color.png"
+SD_logo_url: "https://www7.obs-mip.fr/wp-content-aeris/uploads/sites/66/2020/09/IAGOS_Logo_Color.png"
 
-# The following link points to the main indicator website at the research infrastructure.
-SD_link: https://iagos.aeris-data.fr/
+# This is the display name in the dashboard to select the plugin.
+SD_link:  "https://www.iagos.org/"
 
 # Available plugins are displayed in a dropdown menu 
 SD_URL:
-    plugin_label: 'Station'
-    base_url: https://services.iagos-data.fr/dashboard/          
+    plugin_label: 'Dummy links'
+    base_url: https://data.icos-cp.eu/dashboard/            
     parameters:
-        'Frankfurt airport (FRA)': '?airport=FRA'
+        'Birkenes': '?stationId=BIR&valueType=co2&height=75'
+        'Gartow': '?stationId=GAT&valueType=co2&height=341'
+        'Helgoland': '?stationId=HEL&valueType=co2&height=110'
+        'Hohenpeissenberg': '?stationId=HPB&valueType=co2&height=131'
+        'Hyltemossa': '?stationId=HTM&valueType=co2&height=150'
+        'Hyytiälä': '?stationId=SMR&valueType=co2&height=125'
+        'Ispra': '?stationId=IPR&valueType=co2&height=100'
+        'Jungfraujoch': '?stationId=JFJ&valueType=co2&height=5'
+        'Jülich': '?stationId=JUE&valueType=co2&height=120'
+        'Karlsruhe': '?stationId=KIT&valueType=co2&height=200'
+        'Křešín u Pacova': '?stationId=KRE&valueType=co2&height=250'
+        'La Réunion': '?stationId=RUN&valueType=co2&height=6'
+        'Lampedusa': '?stationId=LMP&valueType=co2&height=8'
+        'Lindenberg': '?stationId=LIN&valueType=co2&height=98'
+        'Lutjewad': '?stationId=LUT&valueType=co2&height=60'
+        'Monte Cimone': '?stationId=CMN&valueType=co2&height=8'
+        'Norunda': '?stationId=NOR&valueType=co2&height=100'
+        'Observatoire pérenne': '?stationId=OPE&valueType=co2&height=120'
+        'Ochsenkopf': '?stationId=OXK&valueType=co2&height=163'
+        'Pallas': '?stationId=PAL&valueType=co2&height=12'
+        'Plateau Rosa': '?stationId=PRS&valueType=co2&height=10'
+        'Puijo': '?stationId=PUI&valueType=co2&height=84'
+        'Puy de Dôme': '?stationId=PUY&valueType=co2&height=10'
+        'Saclay': '?stationId=SAC&valueType=co2&height=100'
+        'Steinkimmen': '?stationId=STE&valueType=co2&height=252'
+        'Svartberget': '?stationId=SVB&valueType=co2&height=150'
+        'Torfhaus': '?stationId=TOH&valueType=co2&height=147'
+        'Trainou': '?stationId=TRN&valueType=co2&height=180'
+        'Utö - Baltic sea': '?stationId=UTO&valueType=co2&height=57'
+        'Westerland': '?stationId=WES&valueType=co2&height=14'
+        'Weybourne': '?stationId=WAO&valueType=co2&height=10'
+        'Zeppelin': '?stationId=ZEP&valueType=co2&height=15'
+        'Zugspitze': '?stationId=ZSF&valueType=co2&height=3'
  
 #preferred size for the widget in pixel
-SD_width: 300
+SD_width: 150
 SD_height: 300
 
 # the folloing section contains plugin specifics
+
 plugin_version: 1.0
 plugin_template: 1.0
-plugin_author: 'Damien Boulanger'
-plugin_contact: 'damien.boulanger@obs-mip.fr'
+plugin_author: 'claudio donofrio'
+plugin_contact: 'claudio.donofrio@nateko.lu.se'
 plugin_token: 
-
-
-
-
-

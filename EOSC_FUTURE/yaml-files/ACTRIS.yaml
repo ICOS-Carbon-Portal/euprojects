@@ -111,7 +111,7 @@ SD_link: "https://www.actris.eu/access-services"
 # Available plugins are displayed in a dropdown menu
 SD_URL:
     plugin_label: 'Station'
-    base_url: http://datavisualisering.no/eosc-future/
+    base_url: https://folk.nilu.no/~ebas/eosc-future/
     parameters:
         'Jungfraujoch': 'jungfraujoch.html'
         'BEO Moussala': 'beo.html'
