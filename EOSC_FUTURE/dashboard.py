@@ -150,5 +150,5 @@ if __name__ == '__main__':
     # and then to port 8080 in the application's docker container.
     # The `ssl_context='adhoc'` parameter is used to quickly serve an
     # application over HTTPS without having to mess with certificates.
-    #app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
-    app.run(debug=True, port=8080, threaded=True)  # , ssl_context='adhoc')
+    app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
+    # app.run(debug=True, port=8080, threaded=True)
