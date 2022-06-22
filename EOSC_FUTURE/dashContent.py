@@ -19,6 +19,7 @@ provider_list = []
 # global var see init_data()
 provider_id_dict = {}
 
+
 # public
 def init_data():
     def iter_to_dict(key_iter: iter, value_iter: object = None) -> dict:
@@ -46,10 +47,10 @@ def fetch_div(provider):
                           children=[inner_content])
     return plugin_div
 
+
 # public
 def get_provider_id(provider):
     return provider_id_dict[provider]
-
 
 # public
 def main_menu():
@@ -182,7 +183,6 @@ def _tab_1_row_container(sd_data, provider):
                    children=_tab_1_content(sd_data, provider))
 
 
-
 #	Info tab (or rename)
 # 1.	Title
 # 2.	Description
@@ -200,19 +200,19 @@ def _tab_2_content(sd_data, provider):
                       html.Div(
                           className='tab-row',
                           children=
-                              dcc.Markdown("**_" + sd_data['title'] +
-                                   "_** ")),
+                          dcc.Markdown("**_" + sd_data['title'] +
+                                       "_** ")),
 
                       html.Div(
-                          children =
+                          children=
                           html.Div(className=descr,
-                              children=
-                              dcc.Markdown(sd_data['description']))),
+                                   children=
+                                   dcc.Markdown(sd_data['description']))),
                       html.Div(children=
-                               dcc.Markdown(
-                                   '''[*For further exploration
+                      dcc.Markdown(
+                          '''[*For further exploration
                                    click here!*](''' + sd_data['SD_link'] + ''')''',
-                                   link_target=sd_data['SD_link']))
+                          link_target=sd_data['SD_link']))
                       ])
     except Exception as e:
         raise Exception(f'{provider} tab-2', e)
@@ -233,16 +233,27 @@ def _tab_3_content(sd_data, provider):
         tab = html.Div(className='tab-column',
                        children=[
                            _tab_row_123(sd_data,
-                                       provider),
+                                        provider),
                            html.Div(className='tab-row',
-                                    children=[
-                                        html.P('Some text.....')]
-                                    )
+                                    children=
+                                    dcc.Markdown(
+                                        ''' License: [ ''' +
+                                        sd_data['license']['name'] +
+                                        '''](''' + sd_data['license']['url'] +
+                                        ''')''',
+                                        link_target=sd_data['license']['url'])),
+                           html.Div(className='tab-row',
+                                    children=
+                                    dcc.Markdown(
+                                        ''' *Plugin author: ''' +
+                                        sd_data['plugin_author'] + '''*  
+                                        *Contact: [ ''' +
+                                        sd_data['plugin_contact'] +
+                                        '''](mailto:''' + sd_data['plugin_contact'] +
+                                        ''')*'''))
                        ])
-
     except Exception as e:
         raise Exception(f'{provider} tab-3', e)
-
     return tab
 
 
@@ -256,7 +267,9 @@ def _tab_3_row_container(sd_data, provider):
 
 def _tab_row_123(sd_data: dict, provider: str):
     try:
-        top_row = html.A(href=sd_data['SD_link'], className='a-spanning-link',
+        top_row = html.A(href=sd_data['SD_link'],
+                         target='_blank',
+                         className='a-spanning-link',
                          children=html.Div(className='tab-row-top',
                                            children=
                                            [dcc.Markdown("**" + sd_data['SD_provider'] +

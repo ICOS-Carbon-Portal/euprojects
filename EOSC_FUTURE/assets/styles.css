@@ -145,7 +145,7 @@ h2 {
 /* the outer most tab container */
 .tab-outer-container{
     width: max(280px,min(400px,80vh));
-    height: max(560px,min(800px,60vh));
+    height: max(560px,min(600px,60vh));
     align:center;
     align-content: center;
 }
