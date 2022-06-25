@@ -20,6 +20,7 @@ provider_list = []
 provider_id_dict = {}
 
 
+# public
 def init_data():
     def iter_to_dict(key_iter: iter, value_iter: object = None) -> dict:
         if value_iter is None:
@@ -34,30 +35,24 @@ def init_data():
     provider_id_dict = iter_to_dict(provider_list)
 
 
+# public - create plugin
 def fetch_div(provider):
     try:
         sd_data = sd_data_obj.get_provider_plug(provider)
     except Exception as e:
         raise Exception('Check call for {}.'.format(provider), e)
 
-    inner_content = tabs_content(sd_data, provider)
-#    my_source = 'https://data.icos-cp.eu/dashboard/?stationId=BIR&valueType=co&height=50'
-#
-#    if inner_content is None:
-#        inner_content = html.Iframe(className='tab-outer-container',
-#                                    src=my_source,
-#                                    title=provider,
-#                                    )
-
+    inner_content = _tabs_content(sd_data, provider)
     plugin_div = html.Div(className='tab-outer-container',
                           children=[inner_content])
     return plugin_div
 
 
+# public
 def get_provider_id(provider):
     return provider_id_dict[provider]
 
-
+# public
 def main_menu():
     menu = dcc.Checklist(
         className='input-checklist',
@@ -69,10 +64,9 @@ def main_menu():
     return menu
 
 
-def tab_1_dropdown(sd_data: dict, provider: str):
+def _tab_1_dropdown(sd_data: dict, provider: str):
     provider_id = get_provider_id(provider)
     menu_options = []
-    drop = None
     base = ''
     try:
         base = sd_data['SD_URL']['base_url']
@@ -88,18 +82,22 @@ def tab_1_dropdown(sd_data: dict, provider: str):
     finally:
         if len(menu_options) > 1:
             link = menu_options[0]['value']
-            drop = dcc.Dropdown(options=menu_options,
+            drop = dcc.Dropdown(className='dash-dropdown',
+                                options=menu_options,
                                 value=link,
+                                clearable=False,
                                 id=f'{provider_id}-drop')
-        elif menu_options == 1:
+        elif len(menu_options) == 1:
             link = menu_options[0]['value']
+            drop = None
         else:
             link = base
+            drop = None
 
     return drop, link
 
 
-def tab_1_iframe(sd_data: dict, provider: str, link: str):
+def _tab_1_iframe(sd_data: dict, provider: str, link: str):
     # TODO
     # validate output to sd_data is it
     #  - an image
@@ -127,13 +125,13 @@ def tab_1_iframe(sd_data: dict, provider: str, link: str):
     return output
 
 
-def tab_1_content(sd_data: dict, provider: str):
-    drop, link = tab_1_dropdown(sd_data, provider)
+def _tab_1_content(sd_data: dict, provider: str):
+    drop, link = _tab_1_dropdown(sd_data, provider)
 
     if drop is not None:
         try:
             tab = html.Div(className='tab-column',
-                           children=[tab_row_123(sd_data, provider),
+                           children=[_tab_row_123(sd_data, provider),
                                      # 1. Top section, horizontal, height ~ 1/5 of tab
                                      # html.Div(className='tab-1-row',
                                      #          children=[html.H4(provider),
@@ -143,14 +141,16 @@ def tab_1_content(sd_data: dict, provider: str):
                                      #                             style={'width': 'max(30%, 80px)'})
                                      #                    ]),
                                      # tab1 end
+
                                      # 2. Middle section, horizontal, height ~ 1/5 of tab
                                      html.Div(className='tab-row',
                                               children=[drop]),  # tab2 end
+
                                      # 3. Fill up remaining?
                                      html.Div(className='tab-row',
-                                              children=[tab_1_iframe(sd_data,
-                                                                     provider,
-                                                                     link)])
+                                              children=[_tab_1_iframe(sd_data,
+                                                                      provider,
+                                                                      link)])
                                      ])  # tabs end
         except Exception as e:
             raise Exception(f'Tab-1 error 1. Check file for {provider}. Exception: ', e)
@@ -159,96 +159,144 @@ def tab_1_content(sd_data: dict, provider: str):
             tab = html.Div(className='tab-column',
                            children=[
                                # 1. Top section, horizontal, height ~ 1/5 of tab
-                               tab_row_123(sd_data, provider),
+                               _tab_row_123(sd_data, provider),
                                # tab1 end
                                # 2. Middle section, horizontal, height ~ 1/5 of tab
                                #  empty...
                                # 3. Fill up remaining?
-                               html.Div(className='tab-3-row',
-                                        children=None)
+                               html.Div(className='tab-row',
+                                        children=_tab_1_iframe(sd_data,
+                                                               provider,
+                                                               link))
                            ])  # tabs end
         except Exception as e:
             raise Exception(f'Tab-1 error 2. Check file for {provider}. Exception: ', e)
     return tab
 
 
-def tab_1_rows(sd_data, provider):
+def _tab_1_row_container(sd_data, provider):
     return dcc.Tab(id='Tab-1',
                    value='Tab-1',
                    label='Indicator',
                    selected_className='custom-tab--selected',
                    className='the-tab',
-                   children=tab_1_content(sd_data, provider))
+                   children=_tab_1_content(sd_data, provider))
 
 
-def tab_2_content(sd_data, provider):
+#	Info tab (or rename)
+# 1.	Title
+# 2.	Description
+# 3.	SD_link
+# 4.	SD_provider
+def _tab_2_content(sd_data, provider):
     try:
-        tab = html.Div(className='tab-column',
-                       children=[tab_row_123(sd_data,
-                                             provider)
-                                 ])
+        if len(sd_data['description']) > 300:
+            descr = 'description-long'
+        else:
+            descr = 'description-short'
+        tab = html.Div(
+            className='tab-column',
+            children=[_tab_row_123(sd_data, provider),
+                      html.Div(
+                          className='tab-row',
+                          children=
+                          dcc.Markdown("**_" + sd_data['title'] +
+                                       "_** ")),
+
+                      html.Div(
+                          children=
+                          html.Div(className=descr,
+                                   children=
+                                   dcc.Markdown(sd_data['description']))),
+                      html.Div(children=
+                      dcc.Markdown(
+                          '''[*For further exploration
+                                   click here!*](''' + sd_data['SD_link'] + ''')''',
+                          link_target=sd_data['SD_link']))
+                      ])
     except Exception as e:
         raise Exception(f'{provider} tab-2', e)
 
     return tab
 
 
-def tab_2_rows(sd_data, provider):
+def _tab_2_row_container(sd_data, provider):
     return dcc.Tab(id='Tab-2',
                    label='Info',
                    selected_className='custom-tab--selected',
                    className='the-tab',
-                   children=tab_2_content(sd_data, provider))
+                   children=_tab_2_content(sd_data, provider))
 
 
-def tab_3_content(sd_data, provider):
+def _tab_3_content(sd_data, provider):
     try:
         tab = html.Div(className='tab-column',
                        children=[
-                           tab_row_123(sd_data,
-                                       provider),
+                           _tab_row_123(sd_data,
+                                        provider),
                            html.Div(className='tab-row',
-                                    children=[
-                                        html.P('Some text.....')]
-                                    )
+                                    children=
+                                    dcc.Markdown(
+                                        ''' License: [ ''' +
+                                        sd_data['license']['name'] +
+                                        '''](''' + sd_data['license']['url'] +
+                                        ''')''',
+                                        link_target=sd_data['license']['url'])),
+                           html.Div(className='tab-row',
+                                    children=
+                                    dcc.Markdown(
+                                        ''' *Plugin author: ''' +
+                                        sd_data['plugin_author'] + '''*  
+                                        *Contact: [ ''' +
+                                        sd_data['plugin_contact'] +
+                                        '''](mailto:''' + sd_data['plugin_contact'] +
+                                        ''')*'''))
                        ])
-
     except Exception as e:
         raise Exception(f'{provider} tab-3', e)
-
     return tab
 
 
-def tab_3_rows(sd_data, provider):
+def _tab_3_row_container(sd_data, provider):
     return dcc.Tab(id='Tab-3',
                    label='About',
                    selected_className='custom-tab--selected',
                    className='the-tab',
-                   children=tab_3_content(sd_data, provider))
+                   children=_tab_3_content(sd_data, provider))
 
 
-def tab_row_123(sd_data: dict, provider: str):
-    top_row = html.Div(className='tab-row',
-                       children=[html.A([html.P(sd_data['SD_provider'])],
-                                        href=sd_data['SD_link']),
-                                 html.P('Some tab content '),
-                                 html.A([
-                                     html.Img(
-                                         className='logo-img',
-                                         src=sd_data['SD_logo_url'])
-                                 ], href=sd_data['SD_link'])])
+def _tab_row_123(sd_data: dict, provider: str):
+    try:
+        top_row = html.A(href=sd_data['SD_link'],
+                         target='_blank',
+                         className='a-spanning-link',
+                         children=html.Div(className='tab-row-top',
+                                           children=
+                                           [dcc.Markdown("**" + sd_data['SD_provider'] +
+                                                         "** " + provider + ".",
+                                                         className='markdown-top-row'),
+                                            html.Img(className='logo-img',
+                                                     src=sd_data['SD_logo_url'])
+                                            ])
+                         )
+
+
+
+    except Exception as e:
+        raise Exception('top_row_123', e)
+
     return top_row
 
 
-def tabs_content(sd_data: dict, provider: str):
+def _tabs_content(sd_data: dict, provider: str):
     provider_id = get_provider_id(provider)
     content = dcc.Tabs(id=f'content-{provider_id}',
                        className='tab-menu',
                        parent_className='tab-outer-container',
                        value='Tab-1',
                        children=[
-                           tab_1_rows(sd_data, provider),
-                           tab_2_rows(sd_data, provider),
-                           tab_3_rows(sd_data, provider)
+                           _tab_1_row_container(sd_data, provider),
+                           _tab_2_row_container(sd_data, provider),
+                           _tab_3_row_container(sd_data, provider)
                        ])
     return content

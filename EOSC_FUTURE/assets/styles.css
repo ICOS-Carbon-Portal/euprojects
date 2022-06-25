@@ -55,14 +55,6 @@ h2 {
     display: block;
 }
 
-.label-input {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: normal;
-    font-size: 25px;
-    cursor: pointer;
-    margin: 10px 0px 10px 0px;
-}
-
 .input-checkbox {
     width: 12px; height: 12px;
     border-radius: 50%;
@@ -76,6 +68,49 @@ h2 {
 .input-checkbox:checked {
     box-shadow: inset 0 0 0 20px indianred; }
 
+.label-input {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: normal;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 10px 0px 10px 0px;
+}
+/*** the above is more or less the starting style ***/
+
+/*** The below is more or less for the styling of the dashboards  ***/
+
+
+.dash-dropdown{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+/* Provider logo in the plugin
+   (This is not the EOSC or ENVRI FAIR logo,
+   that is handled in the top) */
+.logo-img{
+    margin-top: 2px;
+    margin-right: 2px;
+    float: right;
+    height: 33%;
+    width: 33%;
+    object-fit: scale-down;
+    z-index: 1;
+}
+
+.markdown-top-row{
+    width: 63%;
+    z-index: 2;
+}
+.markdown-top-row {
+    color: black;
+}
+
+
+
+
 .output {
     display: flex;
     flex-direction: row;
@@ -87,10 +122,30 @@ h2 {
     font-size: 18px;
 }
 
+
+/**/
+.scrollbar {
+    width: 4px;
+    height: 0;
+    background-color: #f6f6f6;
+}
+
+.description-long{
+  overflow-y: scroll;
+   max-height: 40vh;
+   height:250px;
+/*  overflow: auto;
+  max-height: 40vh; */
+}
+
+.description-short{
+/* */
+}
+
 /* the outer most tab container */
 .tab-outer-container{
     width: max(280px,min(400px,80vh));
-    height: max(560px,min(800px,60vh));
+    height: max(560px,min(600px,60vh));
     align:center;
     align-content: center;
 }
@@ -168,50 +223,37 @@ align: center
     border-top: 3px solid #e36209 !important;
 }
 
-/* provider logo - not eosc logo*/
-.logo-img{
-    margin-top: 2px;
-    margin-right: 2px;
-    float: right;
-    width: 90%;
-}
 
-a {
+/* link spanning over div see:
+   https://stackoverflow.com/questions/796087/make-a-div-into-a-link
+   for a possible alternative */
+.a-spanning-link {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    text-color: black;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%
 }
 
 /* rows in the tab */
-.tab-row{
+.tab-row-top{
+    position:relative;
     margin:0px;
-    padding: 0px;
+    padding: 5px;
     display: flex;
     flex-direction: row;
+    max-height: 0px;
 }
 
-.dash-dropdown{
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
 
 /* the iframe */
 .frame-container {
     margin: 0px 0px 0px 0px;
-    width: 280px;
-    height: 320px;
+    width: 300px;
+    height: 360px;
 
  }
-
-.tab-2-content{
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-}
-
-.tab-3-content{
-    border: 1px solid black;
-    display: flex;
-    flex-direction: row;
-}
 
