@@ -267,6 +267,10 @@ def _tab_3_row_container(sd_data, provider):
 
 def _tab_row_123(sd_data: dict, provider: str):
     try:
+        logo_link = sd_data['SD_logo_url']
+        if logo_link[:5] != 'https':
+            logo_link = './assets/images/' + logo_link
+
         top_row = html.A(href=sd_data['SD_link'],
                          target='_blank',
                          className='a-spanning-link',
@@ -276,7 +280,7 @@ def _tab_row_123(sd_data: dict, provider: str):
                                                          "** " + provider + ".",
                                                          className='markdown-top-row'),
                                             html.Img(className='logo-img',
-                                                     src=sd_data['SD_logo_url'])
+                                                     src=logo_link)
                                             ])
                          )
 

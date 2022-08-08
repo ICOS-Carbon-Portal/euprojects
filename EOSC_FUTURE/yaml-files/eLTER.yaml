@@ -1,0 +1,202 @@
+
+# The template is divided in three sections
+# 1. Metadata to be compatible with data cite, in case of creating a DOI
+# 2. Information about the plug in or service
+# 3. Meta data about the yaml file
+
+# Section 1
+# Metadata for DOI registration according to DataCite Metadata Schema 4.1.
+# For detailed schema description see https://doi.org/10.5438/0014
+
+## Required fields
+
+# The main researchers involved. Include digital identifier (e.g., ORCID)
+# if possible, including the prefix to indicate its type.
+authors:
+  -
+    firstname: ""
+    lastname: ""
+    affiliation: ""
+    id: ""
+
+  -
+    firstname: ""
+    lastname: ""
+    affiliation: ""
+    id: ""
+
+# A title to describe the published resource.
+title: "eLTER Vascular Plant Species Richness"
+
+# Additional information about the resource, e.g., a brief abstract.
+description: |
+  Pleaser write the description here,
+  you can use multiple lines
+  
+
+# List of keywords the resource should be associated with.
+# Give as many keywords as possible, to make the resource findable.
+keywords:
+  - Species Richness
+
+# License information for this resource. Please provide the license name and/or a link to the license.
+# Please add also a corresponding LICENSE file to the repository.
+license:
+  name: "CCBY4 Data Licence"
+  url: "https://creativecommons.org/licenses/by/4.0/"
+
+
+## Optional Fields
+
+# Funding information for this resource.
+# Separate funder name and grant number by comma.
+funding:
+  -
+    funderName: European Commission
+    funderIdentifier: "https://ror.org/00k4n6c32"
+    funderIdentifierType: "ROR"
+    awardURI: "https://cordis.europa.eu/project/id/101017536"
+    awardNumber: "101017536"
+    awardTitle:  "EOSC Future"
+
+# Related publications. reftype might be: IsSupplementTo, IsDescribedBy, IsReferencedBy.
+# Please provide digital identifier (e.g., DOI) if possible.
+# Add a prefix to the ID, separated by a colon, to indicate the source.
+# Supported sources are: DOI, arXiv, PMID
+# In the citation field, please provide the full reference, including title, authors, journal etc.
+references:
+  -
+    id: "doi:10.xxx/zzzz"
+    reftype: "IsSupplementTo"
+    citation: "Citation1"
+  -
+    id: "arxiv:mmmm.nnnn"
+    reftype: "IsSupplementTo"
+    citation: "Citation2"
+  -
+    id: "pmid:nnnnnnnn"
+    reftype: "IsReferencedBy"
+    citation: "Citation3"
+
+
+# Resource type. Default is Dataset, other possible values are Software, DataPaper, Image, Text.
+resourcetype: Dataset
+
+# Section 2
+
+# The following section is in regards to the technical specification for access to the scientific key indicator dashboard. We will start all keys with SD_ for Scientific Dashboard
+
+# Who made the plugin
+SD_provider: "Long-Term Ecosystem Research in Europe"
+
+# This is the display name in the dashboard to select the plugin.
+SD_provider_abbreviation: "eLTER"
+
+# Link to png/jpg-logo - here we assume we have height="40" and width="40"
+SD_logo_url: eLTER_logo.jpg
+
+# The following link points to the main indicator website at the research infrastructure.
+SD_link: https://www.lter-europe.net/
+
+# Available plugins are displayed in a dropdown menu.
+# provide the URL to access an iframe (HTML webpage) which should be displayed
+# base is the base URL (mandatory) which can work on its own,
+# or you can provide additional parameters. IF parameters are available, URL is assembled as
+# base_url + parameters
+# the following example will display the 'Key' in a dropdown list (Western Mediterranean, Gartow).
+SD_URL:
+    plugin_label: Species Richness
+    base_url: https://eosc-future.ceh.ac.uk/species-richness?site=
+    # The keys need to be unique.
+    parameters:
+      'AgroScapeLab Quillow (ZALF) - Germany': '270a41c4-33a8-4da6-9258-2ab10916f262'
+      'Alice Holt - United Kingdom': 'd47ec839-5d20-4315-9f88-1e9edbab22e8'
+      'Aneboda, IM-site SE14 - Sweden': '9dd45aa6-ed7a-49d2-bea4-7750351c55d0'
+      "Appennino centrale: Gran Sasso d'Italia - Italy": 'c0738b00-854c-418f-8d4f-69b03486e9fd'
+      'Appennino centro-meridionale: Majella-Matese - Italy': 'c85fc568-df0c-4cbc-bd1e-02606a36c2bb'
+      'Augustendorf intensive forest monitoring site - Germany': 'bb3f045e-33fe-48ca-9142-1d6b94fb8f9a'
+      'Birkenes - Norway': '68af6e55-e241-4afe-a3a6-32e79eef12fb'
+      'Bornhoeved Lake District - Germany': '2aedc444-7007-4d07-877c-0abf528b0ecd'
+      'Brasschaat - De Inslag - Belgium': '68e6a8e5-d6d2-4c8c-91c4-10e7f87ac556'
+      'Brenna - Poland': '0ff5485d-4436-4153-b6fb-d6eac9c9dd23'
+      'Cairngorms (ECN site) - United Kingdom': '5a04fee1-42aa-47e9-abfc-043a3eda12ac'
+      'Collelongo-Selva Piana ABR1 - Italy': '9b1d144a-dc37-4b0e-8cda-1dda1d7667da'
+      'Colognole TOS1 - Italy': 'fdd9b462-d2a9-441a-80a1-f4e8947f5577'
+      'Davos Seehornwald - Switzerland': 'a547dab2-859a-414c-b148-0e7df8de5773'
+      'Doñana Long-Term Socio-ecological Research Platform - Spain': 'bcbc866c-3f4f-47a8-bbbc-0a93df6de7b2'
+      'Drayton': '00eb83ef-c965-462d-8022-7f7ff75ccd14'
+      'Ehrhorn intensive monitoring site - Germany': '8849988d-762f-475b-98d6-ab08b29645ab'
+      'Foce Saccione-Bonifica Ramitelli (Campobasso) - Italy': '088fe3af-c5bb-4cc8-b479-fe1ea6d5be80'
+      'Foce Trigno-Marina di Petacciato (Campobasso) - Italy': '1835cda2-b56d-400a-b413-ab5c74086dc5'
+      'GLORIA Master Site Schrankogel (AT-SCH), Stubaier Alpen - Austria': '6ae2f712-9924-4d9c-b7e1-3ddffb30b8f1'
+      'Gammtratten, IM-site SE16 - Sweden': '27415652-8de8-40e7-92c1-f82526116a2d'
+      'Glensaugh': '1c4d454d-0c00-49f9-a7fe-3a3e596c3648'
+      'Gårdsjön, IM-site SE04 - Sweden': 'c7f490fb-76a4-4d6c-ba3e-2fd2f33822ec'
+      'Göttinger Wald intensive forest monitoring site - Germany': 'a4294831-1a8e-4f0a-9d3b-e0305ec6fe42'
+      'Hillsborough - United Kingdom': '371c5259-6f38-4aa7-9517-c56f608c62cc'
+      'Hochschwab (AT-HSW) GLORIA - Austria': '4ac03ec3-39d9-4ca1-a925-b6c1ae80c90d'
+      'Hyytiälä SMEAR II LTER - Finland': '663dac80-211d-4c19-a356-04ee0da0f0eb'
+      'Jalovecka dolina - Slovakia': 'e13f1146-b97a-4bc5-9bc5-65322379a567'
+      'Kindla, IM-site SE15 - Sweden': '9aa88bb6-b4a9-4569-8520-3d26643e6de9'
+      'Kiskun Restoration Experiments, KISKUN LTER - Hungary': 'c7a1d72c-7296-49e7-813a-890a11cf0ae9'
+      'Krofdorf - Germany': 'f73a0f95-8fb0-4755-92fc-f4b0207f5fe4'
+      'LTER Zöbelboden - Austria': '8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6'
+      'LTSER Engure - Latvia': '66431807-ebf1-477f-aa52-3716542f3378'
+      'LWF Alptal - Switzerland': '9e1c8ec8-a407-426a-8410-05180b96e75a'
+      'LWF Beatenberg - Switzerland': 'f6a6b3e0-9a39-4fe3-8ae5-24d833b8ad26'
+      'LWF Bettlachstock - Switzerland': 'c30ed2e5-41b0-4f2b-992c-2bd96b3cdba1'
+      'LWF Celerina - Switzerland': '8cb52b19-4720-4212-90f0-599375219c5b'
+      'LWF Chironico - Switzerland': 'b8c789be-5fa5-42cc-b280-6e1a2b73639b'
+      'LWF Isone - Switzerland': '06af0bf1-7ddf-40c8-b4b8-d3602c1f9599'
+      'LWF Jussy - Switzerland': 'fa36576a-6409-41d4-96ae-67f2a3d7e085'
+      'LWF Lausanne - Switzerland': 'e60f9991-daf7-448c-9b78-44b00be86f6d'
+      'LWF Lens - Switzerland': 'dda5ccfa-3fd3-447c-bf61-08a02a3d8374'
+      'LWF Nationalpark - Switzerland': '02ebdc77-d35c-4e19-ad7b-31a65885e7df'
+      'LWF Neunkirch - Switzerland': 'e7c82a90-eee2-4e42-b90d-c0531a59e306'
+      'LWF Novaggio - Switzerland': '27988972-7e28-4fc2-a5e0-8d30d0f5dabd'
+      'LWF Othmarsingen - Switzerland': '9d082cc6-3282-4469-8d7b-05fa3e13489a'
+      'LWF Visp - Switzerland': 'f5f1ceef-2fda-40a0-8e00-4ed9ea002f0f'
+      'LWF Vordemwald - Switzerland': '064c3ef6-5aa5-4c91-bfb5-e3e07fa17059'
+      'Lammi LTER - Finland': 'a43d31c8-6219-4ab8-ac41-6088cb56b12b'
+      'Lange Bramke - Germany': '8e24d4f8-d6f6-4463-83e9-73cac2fd3f38'
+      'Luess intensive monitoring site - Germany': '050e88fa-06e7-43e5-8dcc-6b75a549cb09'
+      'Monte Rufeno LAZ1 - Italy': '05e96829-e64a-48d3-a96d-de2aa4cde146'
+      'Moor House - Upper Teesdale - United Kingdom': 'bf78c96f-0763-4b31-b1a6-6eccef19edd1'
+      'National Park Bavarian Forest - Germany': '993ed2fc-1cb0-4810-a619-8bcf78b6ecee'
+      'North Wyke - United Kingdom': '4fbe4bf9-e342-4412-8f0c-c75aff08a8ca'
+      'Nørholm Hede - Denmark': 'b356da08-15ac-42ad-ba71-aadb22845621'
+      'Obergurgl - Austria': '3de1057c-a364-44f2-8a2a-350d21b58ea0'
+      'Ordesa y Monte Perdido / Huesca ES - Spain': '829a2bcc-79d6-462f-ae2c-13653124359d'
+      'Piano Limina CAL1 - Italy': 'd35d5417-d167-4137-97d1-c62ae4bc580b'
+      'Porton Down - United Kingdom': '0f05a86f-0f7a-4b81-8268-6818a6064428'
+      'Randu meadows - Latvia': '61c188bc-8915-4488-8d92-6d38483406c0'
+      'Rhine-Main-Observatory - Germany': '9f9ba137-342d-4813-ae58-a60911c3abc1'
+      'Rothamsted - United Kingdom': 'cb340d4c-e6e5-465a-b0cb-d6c613fa5541'
+      'Schaenis - Switzerland': '049de4d9-d7db-4b2c-ace5-de8873f5d277'
+      'Slowinski National Park - Poland': '588940f5-ce9f-4248-82bb-c9ce1c39ec31'
+      'Solling - Germany': '2d55b484-2a89-4023-be00-49829ab327f9'
+      'Sonian Forest - Belgium': '0fa0d44f-5314-405f-a647-a7dda423031f'
+      'Sourhope - United Kingdom': '125d4667-0fae-418d-88ff-7d9930809d12'
+      'Tatrzanski National Park - Poland': '017a10e1-a31a-4a0a-b714-3e8ac3cd60de'
+      'Val Masino LOM1 - Italy': '68a5673c-9172-48cc-88e5-b9408b203309'
+      'Wytham - United Kingdom': '16dcd0c3-a114-412c-9f01-8c1af292ba69'
+      'Yr Wyddfa/Snowdon - United Kingdom': '8b5da977-eed8-459f-b663-f3835aa0b356'
+
+#preferred size for the widget in pixel
+#those values are currently not used and will be considered in the future.
+SD_width: 280
+SD_height: 320
+
+
+# Section 3
+# the folloing section contains plugin specifics
+
+plugin_version: 1.1
+plugin_template: 1.1
+plugin_author: 'email@organisation.com'
+plugin_contact: 'email@organisation.com'
+plugin_token: 'not used yet, but potential for authorization, authentication'
+
+
+
+
