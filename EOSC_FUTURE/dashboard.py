@@ -2,7 +2,7 @@ from dash import Dash, dcc, html, Input, Output, State
 from dash.exceptions import PreventUpdate
 # from flask import request
 import dashContent
-# import os
+import os
 
 
 # We use this in checklist-callback
@@ -151,5 +151,8 @@ if __name__ == '__main__':
     # The `ssl_context='adhoc'` parameter is used to quickly serve an
     # application over HTTPS without having to mess with certificates.
     #
-    app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
-    # app.run(debug=True, port=8080, threaded=True)
+    externalIP = os.popen('curl -s ifconfig.me').readline()
+    if externalIP == "194.47.223.137":
+        app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
+    else:
+        app.run(debug=True, port=8082, threaded=True)
