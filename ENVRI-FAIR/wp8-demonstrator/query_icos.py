@@ -246,7 +246,7 @@ def query_datasets(variables=[], temporal=[], spatial=[]):
     outlist = []
     for r in df.iterrows():
         d = {
-            'title': Dobj(r[1].dobj).meta['references']['title'].split(','),
+            'title': Dobj(r[1].dobj).meta['references']['title'],
             'file_name': r[1].fileName,
             'urls': [{'url': r[1].dobj, 'type': 'landing_page'}],
             'ecv_variables': __get_ecv(r[1].spec),
