@@ -316,8 +316,6 @@ def read_dataset(pid):
         # in-place. Each extracted meta-data value will be a new
         # attribute under the corresponding variable.
         dataset[variable_name] = dataset[variable_name].assign_attrs(attributes)
-    for variable in dataset.variables:
-        print(variable, dataset[variable].attrs)
     return dataset
 
 
